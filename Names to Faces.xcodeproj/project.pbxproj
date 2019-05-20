@@ -12,6 +12,7 @@
 		FA527AE2229312A80089FD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA527AE1229312A80089FD4D /* Assets.xcassets */; };
 		FA527AE5229312A80089FD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA527AE3229312A80089FD4D /* LaunchScreen.storyboard */; };
 		FA527AED229314D70089FD4D /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA527AEC229314D70089FD4D /* CollectionViewController.swift */; };
+		FA527AEF22931B4F0089FD4D /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA527AEE22931B4F0089FD4D /* PersonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		FA527AE4229312A80089FD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA527AE6229312A80089FD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA527AEC229314D70089FD4D /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		FA527AEE22931B4F0089FD4D /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				FA527ADA229312A60089FD4D /* AppDelegate.swift */,
 				FA527AEC229314D70089FD4D /* CollectionViewController.swift */,
+				FA527AEE22931B4F0089FD4D /* PersonCell.swift */,
 				FA527ADE229312A60089FD4D /* Main.storyboard */,
 				FA527AE1229312A80089FD4D /* Assets.xcassets */,
 				FA527AE3229312A80089FD4D /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA527AEF22931B4F0089FD4D /* PersonCell.swift in Sources */,
 				FA527AED229314D70089FD4D /* CollectionViewController.swift in Sources */,
 				FA527ADB229312A60089FD4D /* AppDelegate.swift in Sources */,
 			);
