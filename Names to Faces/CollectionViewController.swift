@@ -34,7 +34,7 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return people.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,6 +43,16 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
             
             fatalError("Unable to dequeuePersonCell")
         }
+        
+        cell.name.text = people[indexPath.item].name
+        
+        let path = getDocumentsDirectory().appendingPathComponent(people[indexPath.item].image)
+        cell.imageView.image = UIImage.init(contentsOfFile: path.path)
+        
+        cell.imageView.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
+        cell.imageView.layer.borderWidth = 2
+        cell.imageView.layer.cornerRadius = 3
+        cell.layer.cornerRadius = 7
     
         return cell
     }
