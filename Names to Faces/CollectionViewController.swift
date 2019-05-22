@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class CollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var people = [Person]()
+    let picker = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +86,19 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
     }
 
     @objc func addNewPerson() {
-        let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
-        present(picker, animated: true)
+        
+        let ac = UIAlertController(title: "Choose image", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
+        }))
+        ac.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.openGallery()
+        }))
+        
+        present(ac, animated: true)
+    
     }
     
     //MARK: UIImagePickerControllerDelegate methods
@@ -119,4 +129,18 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            picker.sourceType = .camera
+        }
+        
+        present(picker, animated: true)
+    }
+    
+    func openGallery() {
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true)
+    }
+    
 }
