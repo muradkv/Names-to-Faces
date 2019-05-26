@@ -23,6 +23,7 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
 
+        loadPeople()
     }
 
     // MARK: UICollectionViewDataSource
@@ -73,6 +74,7 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
             person.name = newName
             
             self?.collectionView.reloadData()
+            self?.savePeople()
         })
         
         ac.addAction(UIAlertAction(title: "Delete", style: .default) { _ in
@@ -123,6 +125,8 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         collectionView.reloadData()
         
         dismiss(animated: true)
+        
+        savePeople()
     }
     
     func getDocumentsDirectory() -> URL {
@@ -143,4 +147,20 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         present(picker, animated: true)
     }
     
+    func savePeople() {
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        }
+    }
+    
+    func loadPeople() {
+        let defaults = UserDefaults.standard
+        
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [Person] {
+                people = decodedPeople!
+            }
+        }
+    }
 }
